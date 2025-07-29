@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Azure Text Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Azure Text Analysis Tool</h1>
+        <form method="POST" class="input-form">
+            <textarea name="user_input" placeholder="Enter text to analyze..." required></textarea>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if output %}
+        <div class="result">
+            {% if output.error %}
+                <p class="error">Error: {{ output.error }}</p>
+            {% else %}
+                <h2>Analysis Result:</h2>
+                <p><strong>Language:</strong> {{ output.language }}</p>
+                <p><strong>Sentiment:</strong> {{ output.sentiment }}</p>
+                <p><strong>Key Phrases:</strong> {{ output.key_phrases|join(', ') }}</p>
+
+                <h3>Entities:</h3>
+                <ul>{% for e in output.entities %}<li>{{ e[0] }} ({{ e[1] }})</li>{% endfor %}</ul>
+
+                <h3>Linked Entities:</h3>
+                <ul>{% for l in output.linked_entities %}<li><a href="{{ l[1] }}" target="_blank">{{ l[0] }}</a></li>{% endfor %}</ul>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
