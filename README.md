@@ -47,7 +47,7 @@ Built with a Flask backend, this app demonstrates how to seamlessly integrate po
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/JoshuaFerando/Text-Analysis-with-Azure-AI-Language
+git clone https://github.com/Joshua-Fernando/Text-Analysis-with-Azure-AI-Language
 cd Text-Analysis-with-Azure-AI-Language
 ```
 
